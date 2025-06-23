@@ -33,9 +33,9 @@ class BouncingBallElement extends AnimationElement {
      * 
      */
     render(){
-        this.shadowRoot.innerHTML = ""
+        while (this.shadowRoot.firstChild) { this.shadowRoot.removeChild(this.shadowRoot.firstChild); }
         const style = document.createElement('style');
-        style.innerHTML = `
+        style.textContent = `
             :host{
                 position: absolute;
                 top: 0px;
