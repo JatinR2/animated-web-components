@@ -34,7 +34,7 @@ class TypingElement extends AnimationElement{
     #slot;
     #span;
     get text(){
-        return this.#slot.assignedElements()[0].innerHTML;
+        return this.#slot.assignedElements()[0].textContent;
     }
     constructor(){
         super();
@@ -53,7 +53,7 @@ class TypingElement extends AnimationElement{
      * 
      */
     render(){
-        this.shadowRoot.innerHTML = "";
+        while (this.shadowRoot.firstChild) { this.shadowRoot.removeChild(this.shadowRoot.firstChild); };
         this.#slot = document.createElement('slot');
         this.#slot.style.display = 'none'
         this.shadowRoot.append(this.#slot);
@@ -79,7 +79,7 @@ class TypingElement extends AnimationElement{
             typedText = this.text.substr(0, this.typedLetters)
             this.typedLetters++;
         }while((isInvisibleChar(typedText) || isIncompleteHTMLTag(typedText)) && this.typedLetters <= this.text.length)
-        this.#span.innerHTML = typedText
+        this.#span.textContent = typedText
         this.enableAnimation()
     }
 
