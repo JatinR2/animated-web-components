@@ -5,7 +5,7 @@ export default class AnimationElement extends HTMLElement {
     static #intervals = {};
     /** @type {Number} Number of seconds for each animation */
     get animationSpeed(){
-        return parseFloat( this.getAttribute('animation-speed') )*1000 || 500
+        return parseFloat( this.getAttribute('animation-duration') )*1000 || 500
     }
     /** @type {Boolean} Determines whether the animation should be ran */
     isAnimationEnabled;
